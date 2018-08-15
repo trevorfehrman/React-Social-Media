@@ -3,7 +3,14 @@ import { connect } from "react-redux";
 import * as actions from "../Actions";
 import { getComments } from "../reducers";
 
-const Post = ({ post, deletePost, getPostComments, addComment }) => {
+const Post = ({
+	post,
+	deletePost,
+	getPostComments,
+	addComment,
+	deleteComment,
+	toggleLike
+}) => {
 	return (
 		<div>
 			<p>{post.text}</p>
@@ -11,9 +18,17 @@ const Post = ({ post, deletePost, getPostComments, addComment }) => {
 				Delete post you dick!
 			</button>
 			<div>
+				<button onClick={() => toggleLike(post.id)}>
+					{post.liked ? "unlike" : "like"}
+				</button>
 				<p>Comments</p>
 				{getPostComments(post.id).map(commentObj => (
-					<p key={commentObj.id}>{commentObj.comment}</p>
+					<p key={commentObj.id}>
+						{commentObj.comment}
+						<button onClick={() => deleteComment(commentObj.id)}>
+							&times;
+						</button>
+					</p>
 				))}
 				<input
 					type="text"
@@ -21,7 +36,7 @@ const Post = ({ post, deletePost, getPostComments, addComment }) => {
 					onKeyDown={e => {
 						if (e.key === "Enter") {
 							addComment(post.id, e.target.value);
-							e.target.value = '';
+							e.target.value = "";
 						}
 					}}
 				/>

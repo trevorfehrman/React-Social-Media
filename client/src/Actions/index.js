@@ -1,5 +1,6 @@
 let nextPostID = 1
 let nextCommentID = 1
+
 export const addPost = text => ({
     type: 'ADD_POST',
     id: nextPostID++,
@@ -12,9 +13,19 @@ export const deletePost = id => ({
     id
 })
 
+export const toggleLike = id =>({
+    type: 'TOGGLE_LIKE',
+    id
+})
+
 export const addComment = (postId, comment) => ({
     type: 'ADD_COMMENT',
     id: nextCommentID++,
     postId,
     comment,
+})
+
+export const deleteComment = id => ({
+    type: 'DELETE_COMMENT',
+    id
 })

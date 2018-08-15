@@ -13,6 +13,12 @@ const posts = (state = [], action) => {
 			];
 		case "DELETE_POST":
 			return state.filter(post => post.id !== action.id);
+		case "TOGGLE_LIKE":
+			return state.map(post => {
+				if (post.id === action.id) {
+					return { ...post, liked: !post.liked };
+				} else return post;
+			});
 		default:
 			return state;
 	}
@@ -29,6 +35,8 @@ const comments = (state = [], action) => {
 					comment: action.comment
 				}
 			];
+		case "DELETE_COMMENT":
+			return state.filter(comment => comment.id !== action.id);
 		default:
 			return state;
 	}

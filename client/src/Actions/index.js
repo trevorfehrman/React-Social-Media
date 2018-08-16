@@ -29,3 +29,8 @@ export const deleteComment = id => ({
     type: 'DELETE_COMMENT',
     id
 })
+
+export const setCurrentPost = id => ({
+    type: 'SET_CURRENT_POST',
+    id
+})

@@ -9,7 +9,7 @@ const Post = ({
 	getPostComments,
 	addComment,
 	deleteComment,
-	toggleLike
+	toggleLike,
 }) => {
 	return (
 		<div>
@@ -48,10 +48,10 @@ const Post = ({
 const mapStateToProps = state => ({
 	getPostComments: postId => {
 		return getComments(state, postId);
-	}
+	},
 });
 
 export default connect(
 	mapStateToProps,
-	actions
+	actions,
 )(Post);

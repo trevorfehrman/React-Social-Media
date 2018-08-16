@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../Actions";
 import { getComments } from "../reducers";
+import { Link } from "react-router-dom";
 
 const Post = ({
 	post,
@@ -13,7 +14,9 @@ const Post = ({
 }) => {
 	return (
 		<div>
-			<p>{post.text}</p>
+			<Link to={`/posts/${post.id}`}>
+				<p>{post.text}</p>
+			</Link>
 			<button onClick={() => deletePost(post.id)}>
 				Delete post you dick!
 			</button>

@@ -9,16 +9,14 @@ const PostFeed = props => {
 	return (
 		<Fragment>
 			{props.posts.map(post => (
-				<Link to={`/posts/${post.id}`}>
-					<Post key={post.id} post={post} />
-				</Link>
+				<Post key={post.id} post={post} />
 			))}
 		</Fragment>
 	);
 };
 
 const mapStateToProps = state => ({
-	posts: getPosts(state)
+	posts: getPosts(state),
 });
 
 export default connect(mapStateToProps)(PostFeed);
